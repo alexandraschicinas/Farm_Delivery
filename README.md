@@ -2,7 +2,7 @@
 
 ### Project plan 
     ```plan
-    1. clientTabel - clientName
+    1. clientTable - clientName
                    - phoneNumber
                    - address
             
