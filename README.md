@@ -1,6 +1,6 @@
 # Farm_Delivery
 
-### Project plan - Adelina
+### Project plan 
     ```plan
     1. clientTable - clientName
                    - phoneNumber
