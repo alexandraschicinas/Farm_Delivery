@@ -9,4 +9,4 @@
     2. productsTable - productName
                      - productPrice/amount
  ```
-[] create tables (clients, products) with necessary columns (at first 2 html with their js);
+[ ] create tables (clients, products) with necessary columns (at first 2 html with their js);
