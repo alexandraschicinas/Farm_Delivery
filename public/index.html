@@ -7,15 +7,16 @@
 <body>
     <nav id="menu">
         <div>
-            <a href="#" id="products" data-id="nav_products"> Products </a>
+            <a href="#" id="Products" data-id="product" onclick="clicks()"> Products </a>
         </div>
         <div>
-             <a href="#" id="clients" data-id="nav_clients"> Clients </a>
+             <a href="#" id="clients" data-id="client" onclick="clicks()"> Clients </a>
         </div>
     </nav>
 
-    <h1>Products</h1>
-    <table>
+    <div id ='product' class="table">
+      <h1>Products</h1>
+    <table >
         <thead>
             <tr>
                 <th> Id </th>
@@ -45,21 +46,22 @@
         </tbody>
         <tfoot>
             <tr>
-                <td></td>
+                <td> </td>
                 <td> <input type="text" name="name" id="name" placeholder="Enter your fullname..." required></td>
                 <td> <input type="text" name = "phone" placeholder="Enter your phone no" required></td>
                 <td> <input type="email" name="email" placeholder="Enter your email" required></td>
                 <td> <input type="text" name="county" placeholder="County"></td>
                 <td> <input type="text" name="city" placeholder="City"></td>
                 <td> <input type="text" name="adress" placeholder="Adress"></td>
-                <td> <input type="button" value="Save"></td>
+                <td> <input type="button" value="Save"> </td>
             </tr>
         </tfoot>
-    </table>
-
-    <h1>Clients</h1>
-
-    <table border="2px" >
+    </table>  
+    </div>
+    
+    <div id="client" class="table">
+       <h1>Clients</h1>
+    <table >
         <thead>
             <tr>
                 <th> Id </th>
@@ -96,7 +98,9 @@
                 <td> <input type="button" value="Save"></td>
             </tr>
         </tfoot>
-    </table>
-    <script src=""></script>
+    </table> 
+    </div>
+    
+    <script src="functions.js"></script>
 </body>
 </html>
