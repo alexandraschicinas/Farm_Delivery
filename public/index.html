@@ -49,12 +49,11 @@
                 <td> <input type="text" name="name" id="name" placeholder="Enter your fullname..." required></td>
                 <td> <input type="text" name = "phone" placeholder="Enter your phone no" required></td>
                 <td> <input type="email" name="email" placeholder="Enter your email" required></td>
-                <td> <input type="county" name="county" placeholder="County"></td>
-                <td> <input type="city" name="city" placeholder="City"></td>
-                <td> <input type="adress" name="adress" placeholder="Adress"></td>
+                <td> <input type="text" name="county" placeholder="County"></td>
+                <td> <input type="text" name="city" placeholder="City"></td>
+                <td> <input type="text" name="adress" placeholder="Adress"></td>
                 <td> <input type="button" value="Save"></td>
             </tr>
-
         </tfoot>
     </table>
 
@@ -66,16 +65,36 @@
                 <th> Id </th>
                 <th>Category</th>
                 <th>Name</th>
-                <th>Quantity</th>
-                <th>Price</th>
+                <th>Quantity(kg)</th>
+                <th>Price(Lei)</th>
                 <th>Date</th>
+                <th></th>
             </tr>
         </thead>
         <tbody>
-
+            <tr>
+                <td> 1</td>
+                <td> 1</td>
+                <td> Ceapa</td>
+                <td> 5</td>
+                <td> 5 </td>
+                <td> 12.05.2021</td>
+                <td> 
+                    <a href="http://">&#10006</a>
+                    <a href="http://"> &#9998</a>
+                </td>
+            </tr>
         </tbody>
         <tfoot>
-
+            <tr>
+                <td></td>
+                <td> <input type="number" name="category" placeholder="Enter category..." required></td>
+                <td> <input type="text" name = "type" placeholder="Enter type..." required></td>
+                <td> <input type="number" name="quantity" placeholder="Enter quantity..." required></td>
+                <td> <input type="number" name="price" placeholder="Price..."></td>
+                <td> <input type="date" name="date" placeholder="Date..."></td>
+                <td> <input type="button" value="Save"></td>
+            </tr>
         </tfoot>
     </table>
     <script src=""></script>
