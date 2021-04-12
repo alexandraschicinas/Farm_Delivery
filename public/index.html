@@ -2,10 +2,20 @@
 <html >
 <head>
     <title>Farm Delivery</title>
+    <link rel="stylesheet" href="stylesheets/style.css">
 </head>
 <body>
+    <nav id="menu">
+        <div>
+            <a href="#" id="products" data-id="nav_products"> Products </a>
+        </div>
+        <div>
+             <a href="#" id="clients" data-id="nav_clients"> Clients </a>
+        </div>
+    </nav>
+
     <h1>Products</h1>
-    <table border="2px">
+    <table>
         <thead>
             <tr>
                 <th> Id </th>
@@ -15,17 +25,42 @@
                 <th>County</th>
                 <th>City</th>
                 <th>Street</th>
+                <th> </th>
             </tr>
         </thead>
         <tbody>
-
+            <tr>
+                <td> 1</td>
+                <td> Chicinas Alexandra</td>
+                <td> 0754908036</td>
+                <td> alexandraschicinas@yahoo.com</td>
+                <td> Cluj </td>
+                <td> Cluj-Napoca</td>
+                <td> Fabricii 105</td>
+                <td> 
+                    <a href="http://">&#10006</a>
+                    <a href="http://"> &#9998</a>
+                </td>
+            </tr>
         </tbody>
         <tfoot>
+            <tr>
+                <td></td>
+                <td> <input type="text" name="name" id="name" placeholder="Enter your fullname..." required></td>
+                <td> <input type="text" name = "phone" placeholder="Enter your phone no" required></td>
+                <td> <input type="email" name="email" placeholder="Enter your email" required></td>
+                <td> <input type="county" name="county" placeholder="County"></td>
+                <td> <input type="city" name="city" placeholder="City"></td>
+                <td> <input type="adress" name="adress" placeholder="Adress"></td>
+                <td> <input type="button" value="Save"></td>
+            </tr>
 
         </tfoot>
     </table>
+
     <h1>Clients</h1>
-    <table border="2px">
+
+    <table border="2px" >
         <thead>
             <tr>
                 <th> Id </th>
@@ -43,6 +78,6 @@
 
         </tfoot>
     </table>
-    
+    <script src=""></script>
 </body>
 </html>
