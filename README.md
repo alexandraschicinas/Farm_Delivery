@@ -11,8 +11,9 @@
                      - productPrice/amount
 ```
 
-[ ] create tables (clients, products) with necessary columns (at first 2 html with their js);
+[ ]create tables (clients, products) with necessary columns (at first 2 html with their js);
 
-## Team
+## Team - github accounts:
 
 - [Mercea Violeta](https://github.com/vmercea)
+- [Chicinas Alexandra](https://github.com/alexandraschicinas)
