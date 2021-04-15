@@ -7,15 +7,15 @@
 <body>
     <nav id="menu">
         <div>
-            <a href="#" id="Products" data-id="product" onclick="clicks()"> Products </a>
+            <a href="#" id="Products" data-id="product"> Products </a>
         </div>
         <div>
-             <a href="#" id="clients" data-id="client" onclick="clicks()"> Clients </a>
+             <a href="#" id="clients" data-id="client"> Clients </a>
         </div>
     </nav>
 
-    <div id ='product' class="table">
-      <h1>Products</h1>
+    <div id ='client' class="table">
+      <h1>Clients</h1>
     <table >
         <thead>
             <tr>
@@ -31,13 +31,13 @@
         </thead>
         <tbody>
             <tr>
-                <td> 1</td>
-                <td> Chicinas Alexandra</td>
-                <td> 0754908036</td>
-                <td> alexandraschicinas@yahoo.com</td>
-                <td> Cluj </td>
-                <td> Cluj-Napoca</td>
-                <td> Fabricii 105</td>
+                <td> </td>
+                <td> </td>
+                <td> </td>
+                <td> </td>
+                <td>  </td>
+                <td> </td>
+                <td> </td>
                 <td> 
                     <a href="http://">&#10006</a>
                     <a href="http://"> &#9998</a>
@@ -59,8 +59,8 @@
     </table>  
     </div>
     
-    <div id="client" class="table">
-       <h1>Clients</h1>
+    <div id="product" class="table">
+       <h1>Products</h1>
     <table >
         <thead>
             <tr>
@@ -75,12 +75,12 @@
         </thead>
         <tbody>
             <tr>
-                <td> 1</td>
-                <td> 1</td>
-                <td> Ceapa</td>
-                <td> 5</td>
-                <td> 5 </td>
-                <td> 12.05.2021</td>
+                <td> </td>
+                <td> </td>
+                <td> </td>
+                <td> </td>
+                <td>  </td>
+                <td> </td>
                 <td> 
                     <a href="http://">&#10006</a>
                     <a href="http://"> &#9998</a>
@@ -99,6 +99,43 @@
             </tr>
         </tfoot>
     </table> 
+    </div>
+
+
+    <div id="stock" class="table" display="none">
+        <h1>Stock</h1>
+    <table border="2px">
+        <thead>
+            <tr>
+                <th> Id </th>
+                <th>Date</th>
+                <th>Kind</th>
+                <th>Entries</th>
+                <th>U/M</th>
+                <th>Price</th>
+                <th>Outputs</th>
+                <th>Stock</th>
+            </tr>
+            </thead>
+            
+
+            <h1>Account</h1>
+    <table border="2px">
+        <thead>
+            <tr>
+                <th> Id </th>
+                <th>Board</th>
+                <th>Orders</th>
+                <th>Profile</th>
+            </tr>
+        </thead>
+        <tbody>
+
+        </tbody>
+        <tfoot>
+
+        </tfoot>
+    </table>
     </div>
     
     <script src="functions.js"></script>
