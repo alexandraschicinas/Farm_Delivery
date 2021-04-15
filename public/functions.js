@@ -59,7 +59,7 @@ function showClients(clients) {
 
 }
 function loadClients(){
-    fetch("http://localhost:3000/clients.json") 
+    fetch("http://localhost:3000/clients") 
     .then(r => r.json())
     .then(clients =>{
         allClients = clients;
