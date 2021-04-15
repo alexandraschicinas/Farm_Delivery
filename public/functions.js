@@ -27,3 +27,11 @@ function clicks() {
     }
   });
 }
+
+// GET clients
+fetch("http://localhost:3000/clients", {
+  method: "GET",
+  headers: {
+    "Content-Type": "application/json"
+  }
+});
