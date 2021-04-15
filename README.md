@@ -8,4 +8,4 @@
 
 - [Mercea Violeta](https://github.com/vmercea)
 - [Chicinas Alexandra](https://github.com/alexandraschicinas)
-- [Chesa Ciprian] (https://github.com/ciprianchesa)
+- [Chesa Ciprian](https://github.com/ciprianchesa)
