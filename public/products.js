@@ -26,10 +26,9 @@ function showProducts(products) {
 
 }
 function loadProducts() {
-    fetch("/products.json")
+    fetch("/products")
         .then(r => r.json())
         .then(products => {
-            console.warn("nus tiu")
             allProducts = products;
             showProducts(products);
         });
