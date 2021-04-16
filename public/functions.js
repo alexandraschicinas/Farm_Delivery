@@ -5,32 +5,26 @@ function hide(id) {
 
 function hideAll() {
   const tables = document.getElementsByClassName("table");
-  for(let i = 0; i < tables.length; i++) {
-        hide(tables[i].id);
+  for (let i = 0; i < tables.length; i++) {
+    hide(tables[i].id);
   }
-};
-hideAll();
+}
 
 function showTable(id) {
-  hideAll();  
+  hideAll();
 
   let tableToShow = document.getElementById(id);
   tableToShow.style.display = "";
 }
-showTable("client")
+showTable("client");
 
-function clicks() {
+function clicksOnMenu() {
   document.addEventListener("click", (e) => {
     let link = e.target;
-    if(link.matches("#menu div a")) {
-        let id = link.getAttribute("data-id");
-        showTable(id);
+    if (link.matches("#menu div a")) {
+      let id = link.getAttribute("data-id");
+      showTable(id);
     }
   });
 }
-clicks();
-
-
-
- 
-
+clicksOnMenu();
