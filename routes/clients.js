@@ -48,7 +48,7 @@ router.get("/install", function (req, res, next) {
 router.get("/", function (req, res, next) {
   pool.getConnection(function (err, connection) {
     if (err) throw err;
-    const sql = `SELECT id, name, phone, email, county, city, street url FROM clients`;
+    const sql = `SELECT id, name, phone, email, county, city, street FROM clients`;
     connection.query(sql, function (err, results) {
       if (err) throw err;
       connection.release();
