@@ -93,7 +93,7 @@ router.delete("/delete", function (req, res, next) {
 
   pool.getConnection(function (err, connection) {
     if (err) throw err;
-    const sql = `DELETE FROM teams WHERE id=?`;
+    const sql = `DELETE FROM clients WHERE id=?`;
     connection.query(sql, [id], function (err, results) {
       if (err) throw err;
       connection.release();
