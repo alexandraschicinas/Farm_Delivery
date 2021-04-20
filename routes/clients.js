@@ -64,12 +64,16 @@ router.post("/create", function (req, res, next) {
   const id = req.body.id;
   const name = req.body.name;
   const phone = req.body.phone;
+  const email = req.body.email;
+  const county = req.body.county;
+  const city = req.body.city;
+  const street = req.body.street;
 
 
   pool.getConnection(function (err, connection) {
     if (err) throw err;
-    const sql = `INSERT INTO teams (id, members, name, url) VALUES (NULL, ?, ?, ?);`;
-    connection.query(sql, [members, name, url], function (err, results) {
+    const sql = `INSERT INTO clients (id, name, phone, email, county, city, street) VALUES (NULL, ?, ?, ?, ?, ?, ?);`;
+    connection.query(sql, [name, phone, email, county, city, street], function (err, results) {
       if (err) throw err;
       const id = results.insertId;
       connection.release();
