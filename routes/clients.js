@@ -107,14 +107,17 @@ router.delete("/delete", function (req, res, next) {
  */
 router.put("/update", function (req, res, next) {
   const id = req.body.id;
-  const members = req.body.members;
   const name = req.body.name;
-  const url = req.body.url;
+  const phone = req.body.phone;
+  const email = req.body.email;
+  const county = req.body.county;
+  const city = req.body.city;
+  const street = req.body.street;
 
   pool.getConnection(function (err, connection) {
     if (err) throw err;
-    const sql = `UPDATE teams SET members=?, name=?, url=? WHERE id=?`;
-    connection.query(sql, [members, name, url, id], function (err, results) {
+    const sql = `UPDATE clients SET name=?, phone=?, email=?, county = ?, city = ?, street=?  WHERE id=?`;
+    connection.query(sql, [ name, phone, email, county, city, street, id], function (err, results) {
       if (err) throw err;
       connection.release();
       res.json({ success: true });
