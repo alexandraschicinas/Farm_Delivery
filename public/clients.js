@@ -2,9 +2,9 @@ let allClients = [];
 let editId;
 
 function getHtmlClients(clients){
-    return clients.map(client => {
+    return clients.map((client,i) => {
         return `<tr>
-        <td>${client.id}</td>
+        <td>${i+1}</td>
         <td>${client.name}</td>
         <td>${client.phone}</td>
         <td>${client.email}</td>
