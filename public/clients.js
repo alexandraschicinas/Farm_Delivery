@@ -19,6 +19,7 @@ function getHtmlClients(clients){
     }).join("")
     
 }
+
 function showClients(clients) {
     const html = getHtmlClients(clients);
      
@@ -26,13 +27,50 @@ function showClients(clients) {
     tbody.innerHTML = html;
 
 }
+
 function loadClients(){
     fetch("http://localhost:3000/clients") 
     .then(r => r.json())
-    .then(clients =>{
+    .then(clients => {
         allClients = clients;
         showClients(clients);
     });
 }
 
 loadClients();
+
+function addClient(client) {
+    fetch("clients/create", {
+        method: "POST",
+        headers: {
+            "Content-Type":
+            "application/json"
+        },
+        body: JSON.stringify(client)
+    })
+        .then(response => response.json())
+        .then( status => {
+            if(status.success) {
+                loadClients();
+            }
+        });
+}
+
+function saveClient() {
+    const name = document.querySelector("input[name= name]").value;
+    const phone = document.querySelector("input[name = phone]").value;
+    const email = document.querySelector('input[name = email]').value;
+    const county = document.querySelector('input[name = county]').value;
+    const city = document.querySelector('input[name = city]').value;
+    const street = document.querySelector('input[name = street]').value;
+
+    const client = {
+        name: name,
+        phone: phone,
+        email: email,
+        county: county,
+        city: city,
+        street: street
+    }
+    addClient(client);
+}
