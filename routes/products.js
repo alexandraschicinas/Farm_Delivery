@@ -22,7 +22,7 @@ const pool = mysql.createPool({
 router.get("/", function (req, res, next) {
   pool.getConnection(function (err, connection) {
     if (err) throw err;
-    const sql = `SELECT id, category, name, quantity, price, date FROM products`;
+    const sql = `SELECT id, category, name, quantity, price, DATE_FORMAT(date, "%Y-%m-%d") as date FROM products`;
     connection.query(sql, function (err, results) {
       if (err) throw err;
       connection.release();
