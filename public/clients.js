@@ -56,6 +56,22 @@ function addClient(client) {
         });
 }
 
+function removeClient(id) {
+    fetch("clients/delete", {
+        method: "DELETE",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify({id})
+    })
+    .then(response => response.json())
+    .then( status => {
+        if(status.success) {
+            loadClients();
+        }
+    });
+}
+
 function saveClient() {
     const name = document.querySelector("input[name= name]").value;
     const phone = document.querySelector("input[name = phone]").value;
@@ -74,3 +90,11 @@ function saveClient() {
     }
     addClient(client);
 }
+
+document.querySelector("#client tbody").addEventListener("click", e => {
+    const deleteBtn = e.target;
+    if(deleteBtn.matches("a.remove-btn")) {
+        const id = e.target.getAttribute("data-id");
+        removeClient(id);
+    }
+})
