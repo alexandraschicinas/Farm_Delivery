@@ -2,10 +2,15 @@ let allProducts = [];
 let editIdProd;
 
 function getHtmlProducts(products) {
-    return products.map(product => {
-        return `<tr>
+  return products
+    .map((product) => {
+      let nameCategory = categories.find(
+        (category) => category.id === product.category
+      );
+
+      return `<tr>
          <td>${product.id}</td>
-         <td>${product.category}</td>
+         <td>${nameCategory.name}</td>
          <td>${product.name}</td>
          <td>${product.quantity}</td>
          <td>${product.price}</td>
@@ -14,27 +19,26 @@ function getHtmlProducts(products) {
              <a href="#" class="remove-btn" data-id="${product.id}">&#10006;</a>
              <a href="#" class="edit-btn" data-id="${product.id}">&#9998;</a>
          </td>
-         </tr>`
-    }).join("")
-
+         </tr>`;
+    })
+    .join("");
 }
 function showProducts(products) {
-    const html = getHtmlProducts(products);
+  const html = getHtmlProducts(products);
 
-    const tbody = document.querySelector("#product tbody");
-    tbody.innerHTML = html;
-
+  const tbody = document.querySelector("#product tbody");
+  tbody.innerHTML = html;
 }
 function loadProducts() {
-    fetch("/products")
-        .then(r => r.json())
-        .then(products => {
-            allProducts = products;
-            showProducts(products);
-        });
+  fetch("/products")
+    .then((r) => r.json())
+    .then((products) => {
+      allProducts = products;
+      showProducts(products);
+    });
 }
 
-loadProducts();
+// loadProducts();
 
 function addProducts(product) {
     fetch("/products/create", {
@@ -50,7 +54,7 @@ function addProducts(product) {
           loadProducts();
         }
       });
-  }
+}
 
   function removeProduct(id) {
     fetch("products/delete", {
@@ -66,7 +70,7 @@ function addProducts(product) {
           loadProducts();
         }
       });
-  }
+}
   
   function updateProduct(product) {
     fetch("products/update", {
@@ -91,9 +95,19 @@ function addProducts(product) {
       });
   }
 
+document.querySelector("#product tbody").addEventListener("click", (e) => {
+  const rowEl = e.target;
+  if (rowEl.matches("a.remove-btn")) {
+    const id = e.target.getAttribute("data-id");
+    removeClient(id);
+  } else if ("a.edit-btn") {
+    document.getElementById("saveBtn").innerText = "Update";
+  } 
+});
+
   function saveProduct() {
 
-    const category = document.querySelector("#product input[name = category]").value;
+    const category = document.querySelector("#product [name = category]").value;
     const name = document.querySelector("#product input[name = name]").value;
     const quantity = document.querySelector("#product input[name = quantity]").value;
     const price = document.querySelector("#product input[name = price]").value;
@@ -115,6 +129,16 @@ function addProducts(product) {
     }
   }
 
+function dataToUpdateProduct(product) {
+  document.querySelector("#product [name = category]").value =
+    product.category;
+  document.querySelector("#product input[name = name]").value = product.name;
+  document.querySelector("#product input[name = quantity]").value =
+    product.quantity;
+  document.querySelector("#product input[name = price]").value = product.price;
+  document.querySelector("#product input[name = date]").value = product.date;
+}
+
   document.querySelector("#product tbody").addEventListener("click", (e) => {
     const rowEl = e.target;
     if (rowEl.matches("a.remove-btn")) {
@@ -129,12 +153,34 @@ function addProducts(product) {
       editIdProd = id;
     }
   });
+
+  let categories = [];
+
+  function loadCategory() {
+    fetch("/category")
+      .then((r) => r.json())
+      .then((category) => {
+        console.log(category[0].name);
+        categories = category;
+        showCategory(category);
+        loadProducts();
+      });
+  }
+  setTimeout(loadCategory, 2000);
   
-  function dataToUpdateProduct(product) {
-    document.querySelector("#product input[name = category]").value = product.category;
-    document.querySelector("#product input[name = name]").value = product.name;
-    document.querySelector("#product input[name = quantity]").value = product.quantity;
-    document.querySelector("#product input[name = price]").value = product.price;
-    document.querySelector("#product input[name = date]").value = product.date;
+  function showCategoryHtml(category) {
+    return category.map((categ) => {
+      console.log(categ.name);
+      return `
+          <option value="${categ.id}">${categ.name} </option>
+      `;
+    });
   }
   
+  function showCategory(category) {
+    const html = showCategoryHtml(category);
+    const inputCategory = document.querySelector(
+      "#product tfoot select[name=category]"
+    );
+    inputCategory.innerHTML = html;
+  }
