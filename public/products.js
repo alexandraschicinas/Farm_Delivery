@@ -35,3 +35,105 @@ function loadProducts() {
 }
 
 loadProducts();
+
+function addProducts(product) {
+    fetch("products/create", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(product),
+    })
+      .then((response) => response.json())
+      .then((status) => {
+        if (status.success) {
+          loadProducts();
+        }
+      });
+  }
+
+  function removeProduct(id) {
+    fetch("products/delete", {
+      method: "DELETE",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ id }),
+    })
+      .then((response) => response.json())
+      .then((status) => {
+        if (status.success) {
+          loadProducts();
+        }
+      });
+  }
+  
+  function updateProduct(product) {
+    fetch("products/update", {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        id: editedId,
+        category: product.category,
+        name: product.name,
+        quantity: product.quantity,
+        price: product.price,
+        date: product.date,
+      }),
+    })
+      .then((response) => response.json())
+      .then((status) => {
+        if (status.success) {
+          loadProducts();
+        }
+      });
+  }
+
+  function saveProduct() {
+    const category = document.querySelector("input[name= category]").value;
+    const name = document.querySelector("input[name = name]").value;
+    const quantity = document.querySelector("input[name = quantity]").value;
+    const price = document.querySelector("input[name = price]").value;
+    const date = document.querySelector("input[name = date]").value;
+  
+    const product = {
+      category: category,
+      type: type,
+      quantity: quantity,
+      price: price,
+      date: date,
+    };
+  
+    if (editedId) {
+      product.id = editedId;
+      updateProduct(product);
+    } else {
+      addProduct(product);
+    }
+  }
+
+  document.querySelector("#product tbody").addEventListener("click", (e) => {
+    const rowEl = e.target;
+    if (rowEl.matches("a.remove-btn")) {
+      const id = e.target.getAttribute("data-id");
+      removeClient(id);
+    } else if ("a.edit-btn") {
+      document.getElementById("saveBtn").innerText = "Update";
+  
+      const id = e.target.getAttribute("data-id");
+      const editedProduct = allProducts.find((product) => product.id == id);
+      dataToUpdateProduct(editedProduct);
+      editedId = id;
+    }
+  });
+  
+  function dataToUpdateProduct(product) {
+    document.querySelector("#product input[name = category]").value = product.category;
+    document.querySelector("#product input[name = name]").value = product.name;
+    document.querySelector("#product input[name = quantity]").value = product.quantity;
+    document.querySelector("#product input[name = price]").value = product.price;
+    document.querySelector("#product input[name = date]").value = product.date;
+  }
+  

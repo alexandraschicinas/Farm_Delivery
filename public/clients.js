@@ -136,10 +136,10 @@ document.querySelector("#client tbody").addEventListener("click", (e) => {
 });
 
 function dataToUpdate(client) {
-  document.querySelector("input[name= name]").value = client.name;
-  document.querySelector("input[name = phone]").value = client.phone;
-  document.querySelector("input[name = email]").value = client.email;
-  document.querySelector("input[name = county]").value = client.county;
-  document.querySelector("input[name = city]").value = client.city;
-  document.querySelector("input[name = street]").value = client.street;
+  document.querySelector("#client input[name = name]").value = client.name;
+  document.querySelector("#client input[name = phone]").value = client.phone;
+  document.querySelector("#client input[name = email]").value = client.email;
+  document.querySelector("#client input[name = county]").value = client.county;
+  document.querySelector("#client input[name = city]").value = client.city;
+  document.querySelector("#client input[name = street]").value = client.street;
 }
