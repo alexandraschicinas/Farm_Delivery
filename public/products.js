@@ -1,5 +1,5 @@
 let allProducts = [];
-let editId1;
+let editIdProd;
 
 function getHtmlProducts(products) {
     return products.map(product => {
@@ -37,7 +37,7 @@ function loadProducts() {
 loadProducts();
 
 function addProducts(product) {
-    fetch("products/create", {
+    fetch("/products/create", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -75,7 +75,7 @@ function addProducts(product) {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
-        id: editedId,
+        id: editIdProd,
         category: product.category,
         name: product.name,
         quantity: product.quantity,
@@ -92,25 +92,26 @@ function addProducts(product) {
   }
 
   function saveProduct() {
-    const category = document.querySelector("input[name= category]").value;
-    const name = document.querySelector("input[name = name]").value;
-    const quantity = document.querySelector("input[name = quantity]").value;
-    const price = document.querySelector("input[name = price]").value;
-    const date = document.querySelector("input[name = date]").value;
+
+    const category = document.querySelector("#product input[name = category]").value;
+    const name = document.querySelector("#product input[name = name]").value;
+    const quantity = document.querySelector("#product input[name = quantity]").value;
+    const price = document.querySelector("#product input[name = price]").value;
+    const date = document.querySelector("#product input[name = date]").value;
   
     const product = {
       category: category,
-      type: type,
+      name: name,
       quantity: quantity,
       price: price,
       date: date,
     };
   
-    if (editedId) {
-      product.id = editedId;
+    if (editIdProd) {
+      product.id = editIdProd;
       updateProduct(product);
     } else {
-      addProduct(product);
+      addProducts(product);
     }
   }
 
@@ -120,12 +121,12 @@ function addProducts(product) {
       const id = e.target.getAttribute("data-id");
       removeClient(id);
     } else if ("a.edit-btn") {
-      document.getElementById("saveBtn").innerText = "Update";
+      document.getElementById("saveProd").innerText = "Update";
   
       const id = e.target.getAttribute("data-id");
       const editedProduct = allProducts.find((product) => product.id == id);
       dataToUpdateProduct(editedProduct);
-      editedId = id;
+      editIdProd = id;
     }
   });
   
