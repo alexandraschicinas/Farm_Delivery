@@ -140,7 +140,7 @@ document.querySelector("#product tbody").addEventListener("click", (e) => {
   const rowEl = e.target;
   if (rowEl.matches("a.remove-btn")) {
     const id = e.target.getAttribute("data-id");
-    removeClient(id);
+    removeProduct(id);
   } else if ("a.edit-btn") {
     document.getElementById("saveProd").innerText = "Update";
 
