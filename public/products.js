@@ -99,7 +99,7 @@ document.querySelector("#product tbody").addEventListener("click", (e) => {
     const id = e.target.getAttribute("data-id");
     removeClient(id);
   } else if ("a.edit-btn") {
-    document.getElementById("saveBtn").innerText = "Update";
+    document.getElementById("saveProd").innerText = "Update";
   }
 });
 
