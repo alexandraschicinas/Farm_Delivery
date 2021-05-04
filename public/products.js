@@ -8,7 +8,6 @@ function getHtmlProducts(products) {
       let nameCategory = categories.find(
         (category) => category.id === product.category
       );
-
       return `<tr>
          <td>${product.id}</td>
          <td>${nameCategory.name}</td>
@@ -38,8 +37,6 @@ function loadProducts() {
       showProducts(products);
     });
 }
-
-// loadProducts();
 
 function addProducts(product) {
   fetch("/products/create", {
@@ -159,11 +156,9 @@ function loadCategory() {
     .then((r) => r.json())
     .then((category) => {
       categories = category;
-      showCategory(category);
-      loadProducts();
+      showCategory(categories);
     });
 }
-setTimeout(loadCategory, 2000);
 
 function showCategoryHtml(category) {
   return category.map((categ) => {
@@ -178,3 +173,12 @@ function showCategory(category) {
   );
   inputCategory.innerHTML = html;
 }
+
+Promise.all(loadCategory(),
+   loadProducts())
+  .then(responses => {
+    return responses;
+  })
+  .catch(function(message = "Something gone wrong..."){
+    return message;
+  });
