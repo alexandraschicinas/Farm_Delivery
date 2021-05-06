@@ -15,6 +15,7 @@ function getHtmlClients(clients) {
          <td>   
             <a href="#" class="remove-btn" data-id="${client.id}">&#10006;</a>
             <a href="#" class="edit-btn" data-id="${client.id}">&#9998;</a>
+            <button class="invoice-btn" data-id="${client.id}">invoice generator</button>
         </td>
         </tr>`;
     })
@@ -96,12 +97,12 @@ function updateClient(client) {
 }
 
 function saveClient() {
-  const name = document.querySelector("input[name= name]").value;
-  const phone = document.querySelector("input[name = phone]").value;
-  const email = document.querySelector("input[name = email]").value;
-  const county = document.querySelector("input[name = county]").value;
-  const city = document.querySelector("input[name = city]").value;
-  const street = document.querySelector("input[name = street]").value;
+  const name = document.querySelector("#client input[name= name]").value;
+  const phone = document.querySelector("#client input[name = phone]").value;
+  const email = document.querySelector("#client input[name = email]").value;
+  const county = document.querySelector("#client input[name = county]").value;
+  const city = document.querySelector("#client input[name = city]").value;
+  const street = document.querySelector("#client input[name = street]").value;
 
   const client = {
     name: name,
@@ -125,13 +126,17 @@ document.querySelector("#client tbody").addEventListener("click", (e) => {
   if (rowEl.matches("a.remove-btn")) {
     const id = e.target.getAttribute("data-id");
     removeClient(id);
-  } else if ("a.edit-btn") {
+  } else if (rowEl.matches("a.edit-btn")) {
     document.getElementById("saveBtn").innerText = "Update";
 
     const id = e.target.getAttribute("data-id");
     const editedClient = allClients.find((client) => client.id == id);
     dataToUpdate(editedClient);
     editedId = id;
+  }
+  else if (rowEl.matches("button.invoice-btn")){
+    showInvoiceProducts(allProducts);
+    hideAll()
   }
 });
 

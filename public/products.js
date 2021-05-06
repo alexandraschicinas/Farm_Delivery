@@ -30,11 +30,11 @@ function showProducts(products) {
   tbody.innerHTML = html;
 }
 function loadProducts() {
-  fetch("/products")
+  return fetch("/products")
     .then((r) => r.json())
     .then((products) => {
       allProducts = products;
-      showProducts(products);
+      return products
     });
 }
 
@@ -152,11 +152,12 @@ document.querySelector("#product tbody").addEventListener("click", (e) => {
 });
 
 function loadCategory() {
-  fetch("/category")
+  return fetch("/category")
     .then((r) => r.json())
-    .then((category) => {
-      categories = category;
+    .then((r) => {
+      categories = r;
       showCategory(categories);
+      return r
     });
 }
 
@@ -174,11 +175,14 @@ function showCategory(category) {
   inputCategory.innerHTML = html;
 }
 
-Promise.all(loadCategory(),
-   loadProducts())
-  .then(responses => {
-    return responses;
-  })
-  .catch(function(message = "Something gone wrong..."){
-    return message;
-  });
+Promise.all([
+  loadCategory(),
+  loadProducts()
+]) 
+.then(responses => {
+  showProducts(allProducts);
+  return responses;
+})
+.catch(function(message = "Something gone wrong..."){
+  return message;
+});
