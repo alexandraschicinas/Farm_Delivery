@@ -12,6 +12,7 @@ nav ul {
   padding: 5px;
   border-radius: 10px;
   list-style-type: none;
+  /* width: 100%; */
 }
 
 a {
@@ -45,3 +46,10 @@ thead {
    padding: 5px;
 }
 
+#search {
+  margin: 10px;
+  box-shadow: 2px 2px gray;
+  border-radius: 10px;
+  width: 200px;
+  height: 20px;
+}

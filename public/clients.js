@@ -143,3 +143,17 @@ function dataToUpdate(client) {
   document.querySelector("#client input[name = city]").value = client.city;
   document.querySelector("#client input[name = street]").value = client.street;
 }
+
+document.getElementById("search").addEventListener("input", e => {
+  const text = e.target.value.toLowerCase();
+  const filteredText = allClients.filter( client => {
+   return (
+     client.name.toLowerCase().indexOf(text) > -1 ||
+     client.email.toLowerCase().indexOf(text) > -1 ||
+     client.county.toLowerCase().indexOf(text) > -1 ||
+     client.city.toLowerCase().indexOf(text) > -1 ||
+     client.street.toLowerCase().indexOf(text) > -1 
+  );
+})
+  showClients(filteredText);
+})
