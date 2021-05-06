@@ -21,7 +21,7 @@ showTable("client");
 function clicksOnMenu() {
   document.addEventListener("click", (e) => {
     let link = e.target;
-    if (link.matches("#menu div a")) {
+    if (link.matches("#menu a")) {
       let id = link.getAttribute("data-id");
       showTable(id);
     }
