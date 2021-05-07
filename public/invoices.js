@@ -1,4 +1,3 @@
-hide(invoice)
 function getHtmlInvoiceProducts(allProducts) {
   return allProducts
     .map((product, i) => {

@@ -15,7 +15,7 @@ function getHtmlClients(clients) {
          <td>   
             <a href="#" class="remove-btn" data-id="${client.id}">&#10006;</a>
             <a href="#" class="edit-btn" data-id="${client.id}">&#9998;</a>
-            <button class="invoice-btn" data-id="${client.id}">invoice generator</button>
+            <button class="invoice-btn" data-id="${client.id}">Invoice Generator</button>
         </td>
         </tr>`;
     })
@@ -127,16 +127,16 @@ document.querySelector("#client tbody").addEventListener("click", (e) => {
     const id = e.target.getAttribute("data-id");
     removeClient(id);
   } else if (rowEl.matches("a.edit-btn")) {
-    document.getElementById("saveBtn").innerText = "Update";
+      document.getElementById("saveBtn").innerText = "Update";
 
-    const id = e.target.getAttribute("data-id");
-    const editedClient = allClients.find((client) => client.id == id);
-    dataToUpdate(editedClient);
-    editedId = id;
-  }
-  else if (rowEl.matches("button.invoice-btn")){
-    showInvoiceProducts(allProducts);
-    hideAll()
+      const id = e.target.getAttribute("data-id");
+      const editedClient = allClients.find((client) => client.id == id);
+      dataToUpdate(editedClient);
+      editedId = id;
+  } else if (rowEl.matches("button.invoice-btn")) {
+      hideAll();
+      showTable("invoice");
+      showInvoiceProducts(allProducts);
   }
 });
 
@@ -149,16 +149,16 @@ function dataToUpdate(client) {
   document.querySelector("#client input[name = street]").value = client.street;
 }
 
-document.getElementById("search").addEventListener("input", e => {
+document.getElementById("search").addEventListener("input", (e) => {
   const text = e.target.value.toLowerCase();
-  const filteredText = allClients.filter( client => {
-   return (
-     client.name.toLowerCase().indexOf(text) > -1 ||
-     client.email.toLowerCase().indexOf(text) > -1 ||
-     client.county.toLowerCase().indexOf(text) > -1 ||
-     client.city.toLowerCase().indexOf(text) > -1 ||
-     client.street.toLowerCase().indexOf(text) > -1 
-  );
-})
+  const filteredText = allClients.filter((client) => {
+    return (
+      client.name.toLowerCase().indexOf(text) > -1 ||
+      client.email.toLowerCase().indexOf(text) > -1 ||
+      client.county.toLowerCase().indexOf(text) > -1 ||
+      client.city.toLowerCase().indexOf(text) > -1 ||
+      client.street.toLowerCase().indexOf(text) > -1
+    );
+  });
   showClients(filteredText);
-})
+});
