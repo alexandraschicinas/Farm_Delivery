@@ -23,6 +23,7 @@ function getHtmlProducts(products) {
     })
     .join("");
 }
+
 function showProducts(products) {
   const html = getHtmlProducts(products);
 
@@ -93,16 +94,6 @@ function updateProduct(product) {
     });
 }
 
-document.querySelector("#product tbody").addEventListener("click", (e) => {
-  const rowEl = e.target;
-  if (rowEl.matches("a.remove-btn")) {
-    const id = e.target.getAttribute("data-id");
-    removeClient(id);
-  } else if ("a.edit-btn") {
-    document.getElementById("saveProd").innerText = "Update";
-  }
-});
-
 function saveProduct() {
   const category = document.querySelector("#product [name = category]").value;
   const name = document.querySelector("#product input[name = name]").value;
@@ -141,7 +132,7 @@ document.querySelector("#product tbody").addEventListener("click", (e) => {
   if (rowEl.matches("a.remove-btn")) {
     const id = e.target.getAttribute("data-id");
     removeProduct(id);
-  } else if ("a.edit-btn") {
+  } else if (rowEl.matches("a.edit-btn")) {
     document.getElementById("saveProd").innerText = "Update";
 
     const id = e.target.getAttribute("data-id");
