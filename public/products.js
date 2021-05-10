@@ -172,6 +172,7 @@ Promise.all([
 ]) 
 .then(responses => {
   showProducts(allProducts);
+  printSum();
   return responses;
 })
 .catch(function(message = "Something gone wrong..."){

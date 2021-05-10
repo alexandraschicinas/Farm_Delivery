@@ -1,5 +1,6 @@
 let allClients = [];
 let editedId;
+let clientId;
 
 function getHtmlClients(clients) {
   return clients
@@ -134,9 +135,11 @@ document.querySelector("#client tbody").addEventListener("click", (e) => {
       dataToUpdate(editedClient);
       editedId = id;
   } else if (rowEl.matches("button.invoice-btn")) {
+      clientId = e.target.getAttribute("data-id");
       hideAll();
       showTable("invoice");
-      showInvoiceProducts(allProducts);
+      showInvoiceProducts(allProducts); 
+      showNameOfClientOnInvoice(clientId);
   }
 });
 
