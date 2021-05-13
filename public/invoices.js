@@ -88,7 +88,7 @@ function addInvoice() {
     body: JSON.stringify({
       clientId: invoiceClient.id,
       products: getProductIds(),
-      delivery: "2021-06-23"
+      delivery: document.getElementById("delivery").value 
     }),
   })
     .then((response) => response.json())

@@ -7,7 +7,7 @@
 - [x] create 2 tables in DB: invoices and invoiceProducts;
 - [x] create invoice for client;
 - [ ] sum products prices from invoice;;
-- [ ] add column for delivery date;
+- [x] add functional input for delivery date;
 - [ ] add an input for the required product quantities; 
 - [ ] after saving the invoice, show only the selected products;
 
