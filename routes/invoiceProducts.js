@@ -21,7 +21,7 @@ router.get("/install", function (req, res, next) {
   pool.getConnection(function (err, connection) {
     if (err) throw err;
     const sql = `
-    CREATE TABLE IF NOT EXISTS invoices 
+    CREATE TABLE IF NOT EXISTS invoiceProducts 
     (
       id INT NOT NULL AUTO_INCREMENT, 
       invoiceId INT NOT NULL, 
@@ -44,7 +44,7 @@ router.get("/install", function (req, res, next) {
 router.get("/", function (req, res, next) {
   pool.getConnection(function (err, connection) {
     if (err) throw err;
-    const sql = `SELECT id, invoiceId, product FROM invoiceProduct`;
+    const sql = `SELECT id, invoiceId, product FROM invoiceProducts`;
     connection.query(sql, function (err, results) {
       if (err) throw err;
       connection.release();
@@ -64,7 +64,7 @@ router.post("/create", function (req, res, next) {
 
   pool.getConnection(function (err, connection) {
     if (err) throw err;
-    const sql = `INSERT INTO invoiceProducts (id, invoiceId, product  ) VALUES (NULL, ?, ?, ?);`;
+    const sql = `INSERT INTO invoiceProducts (id, invoiceId, product) VALUES (NULL, ?, ? );`;
     connection.query(sql, [invoiceId, product], function (err, results) {
       if (err) throw err;
       const id = results.insertId;

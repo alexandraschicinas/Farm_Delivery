@@ -2,14 +2,14 @@ let allProducts = [];
 let editIdProd;
 let categories = [];
 
-function getHtmlProducts(products) {
+function getHtmlProducts(products, i) {
   return products
-    .map((product) => {
+    .map((product, i) => {
       let nameCategory = categories.find(
         (category) => category.id === product.category
       );
       return `<tr>
-         <td>${product.id}</td>
+         <td>${i+1}</td>
          <td>${nameCategory.name}</td>
          <td>${product.name}</td>
          <td>${product.quantity}</td>
@@ -78,12 +78,9 @@ function updateProduct(product) {
       "Content-Type": "application/json",
     },
     body: JSON.stringify({
+      ...product,
       id: editIdProd,
-      category: product.category,
-      name: product.name,
-      quantity: product.quantity,
-      price: product.price,
-      date: product.date,
+      
     }),
   })
     .then((response) => response.json())
@@ -173,6 +170,7 @@ Promise.all([
 .then(responses => {
   showProducts(allProducts);
   printSum();
+  getProductId()
   return responses;
 })
 .catch(function(message = "Something gone wrong..."){
