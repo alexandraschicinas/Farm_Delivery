@@ -66,7 +66,10 @@ function removeProduct(id) {
     .then((response) => response.json())
     .then((status) => {
       if (status.success) {
-        loadProducts();
+        loadProducts().then(responses => {
+          showProducts(allProducts);
+          return responses;
+        });
       }
     });
 }
@@ -86,7 +89,10 @@ function updateProduct(product) {
     .then((response) => response.json())
     .then((status) => {
       if (status.success) {
-        loadProducts();
+        loadProducts().then(responses => {
+          showProducts(allProducts);
+          return responses;
+        });
       }
     });
 }
