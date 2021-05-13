@@ -56,7 +56,7 @@ router.get("/", function (req, res, next) {
 /**
  *
  */
-router.post("/create", function (req, res, next) {
+router.post("/create2", function (req, res, next) {
   const id = req.body.id;
   const invoiceId = req.body.invoiceId;
   const product = req.body.product;

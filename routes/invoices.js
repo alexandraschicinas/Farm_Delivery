@@ -90,7 +90,7 @@ router.post("/create", function (req, res, next) {
       const invoiceId = results.insertId;
       const values = products.map((product) => [invoiceId, product]);
       console.log(values);
-      const sql = `INSERT INTO invoiceProducts (invoiceId, product) VALUES ?;`;
+      const sql = `INSERT INTO invoiceProducts (invoiceId, product) VALUES ? ;`;
       connection.query(sql, [values], function (err, results) {
         if (err) throw err;
         connection.release();

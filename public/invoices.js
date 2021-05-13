@@ -97,6 +97,13 @@ function addInvoice() {
     });
 }
 
+function saveInvoiceData(){
+  const saveBtn = document.querySelector("#save-invoice");
+  saveBtn.innerHTML= getProductIds(), addInvoice();
+}
+
+
+
 
 
 
